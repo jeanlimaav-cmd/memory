@@ -9,5 +9,6 @@ Current product capabilities inferred from durable repository evidence:
 - CLI command docs: The `docs` CLI command read bundled public Memory docs or open the hosted docs site.
 - CLI command export: The `export` CLI command export generated Memory projections.
 - CLI command obsidian: The `obsidian` CLI command export a generated Obsidian-compatible projection.
+- Public docs Memory Recipes: The `memory-recipes` docs topic provides copyable prompts for product, architecture, debugging, workflow, source-backed, and repair memory without adding new Memory schemas or product surface.
 
 Update this synthesis when features are added, removed, renamed, or replaced.

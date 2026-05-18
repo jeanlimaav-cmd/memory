@@ -17,6 +17,7 @@ describe("memory docs", () => {
     expect(output.stdout()).toContain("- getting-started:");
     expect(output.stdout()).toContain("- capabilities:");
     expect(output.stdout()).toContain("- specializing-memory:");
+    expect(output.stdout()).toContain("- memory-recipes:");
     expect(output.stdout()).toContain("- demand-driven-memory:");
     expect(output.stdout()).toContain("- wiki-workflow:");
     expect(output.stdout()).toContain("- agent-integration:");
@@ -137,6 +138,30 @@ describe("memory docs", () => {
     expect(output.stdout()).toContain("Codex");
     expect(output.stdout()).toContain("Cursor");
     expect(output.stdout()).toContain("memory setup");
+    expect(output.stdout()).toContain("memory diff");
+  });
+
+  it("keeps the recipes alias scoped to agent recipes", async () => {
+    const output = createCapturedOutput();
+
+    const exitCode = await main(["node", "memory", "docs", "recipes"], output.writers);
+
+    expect(exitCode).toBe(0);
+    expect(output.stderr()).toBe("");
+    expect(output.stdout()).toContain("# Agent recipes");
+    expect(output.stdout()).not.toContain("# Memory Recipes");
+  });
+
+  it("prints the bundled memory recipes topic", async () => {
+    const output = createCapturedOutput();
+
+    const exitCode = await main(["node", "memory", "docs", "memory-recipes"], output.writers);
+
+    expect(exitCode).toBe(0);
+    expect(output.stderr()).toBe("");
+    expect(output.stdout()).toContain("# Memory Recipes");
+    expect(output.stdout()).toContain("Build or repair product memory for this repository.");
+    expect(output.stdout()).toContain("memory wiki ingest --stdin");
     expect(output.stdout()).toContain("memory diff");
   });
 

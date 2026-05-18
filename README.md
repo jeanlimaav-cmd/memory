@@ -250,6 +250,7 @@ For official listing paths and release prep, see
 ## Documentation
 
 - [Setup](https://docs.aictx.dev/getting-started/)
+- [Memory recipes](https://docs.aictx.dev/memory-recipes/)
 - [Agent recipes](https://docs.aictx.dev/agent-recipes/)
 - [CLI reference](https://docs.aictx.dev/cli/)
 - [MCP](https://docs.aictx.dev/mcp/)

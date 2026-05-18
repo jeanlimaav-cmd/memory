@@ -94,6 +94,8 @@ When this is done, report:
   syntheses.
 - [Specializing Memory](/specializing-memory/) shows how to shape memory for your
   repo's product, workflows, and agent guidance.
+- [Memory Recipes](/memory-recipes/) gives copyable prompts for product,
+  architecture, debugging, workflow, source-backed, and repair memory.
 - [Agent integration](/agent-integration/) gives agents the concrete workflow
   and safety rules.
 - [Agent recipes](/agent-recipes/) gives copyable setup prompts for Codex,

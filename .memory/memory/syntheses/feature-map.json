@@ -1,6 +1,6 @@
 {
   "body_path": "memory/syntheses/feature-map.md",
-  "content_hash": "sha256:055ce4ebaf89044fd92c30cd15c0585f481a99fad32bc691400b8ab027c60a18",
+  "content_hash": "sha256:a949d5c53f129bcbbd122992c2d7f6c6017321c6e82736e77646e384e504a674",
   "created_at": "2026-05-18T15:00:40+02:00",
   "evidence": [
     {
@@ -26,6 +26,14 @@
     {
       "id": "source.src-cli-commands-export-ts",
       "kind": "source"
+    },
+    {
+      "id": "docs/src/content/docs/memory-recipes.md",
+      "kind": "file"
+    },
+    {
+      "id": "src/cli/commands/docs.ts",
+      "kind": "file"
     }
   ],
   "facets": {
@@ -35,7 +43,8 @@
       "src/cli/commands/check.ts",
       "src/cli/commands/diff.ts",
       "src/cli/commands/docs.ts",
-      "src/cli/commands/export.ts"
+      "src/cli/commands/export.ts",
+      "docs/src/content/docs/memory-recipes.md"
     ],
     "category": "feature-map",
     "load_modes": [
@@ -61,5 +70,5 @@
   ],
   "title": "Feature map",
   "type": "synthesis",
-  "updated_at": "2026-05-18T15:00:40+02:00"
+  "updated_at": "2026-05-18T15:32:03+02:00"
 }

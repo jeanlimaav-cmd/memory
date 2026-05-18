@@ -63,6 +63,7 @@ memory docs
 memory docs getting-started
 memory docs capabilities
 memory docs specializing-memory
+memory docs memory-recipes
 memory docs agent-recipes
 memory docs agent-integration --open
 memory docs --json

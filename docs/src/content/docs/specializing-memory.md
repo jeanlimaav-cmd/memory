@@ -11,6 +11,15 @@ future agents the context a teammate would normally pick up over time: what the
 product is for, which workflows matter, where traps live, what conventions are
 current, and which facts are source-backed.
 
+Think of Memory as the base layer and recipes as the specialization layer.
+Memory supplies local files, object types, validation, retrieval, and reviewable
+diffs. Recipes are prompts that tell an agent which project knowledge to inspect
+and save through the same commands. They do not add schemas, templates, plugins,
+or automatic capture.
+
+For copyable prompts that shape product, architecture, debugging, workflow,
+source-backed, and repair memory, see [Memory Recipes](/memory-recipes/).
+
 ## Start with repo guidance
 
 By default, `memory setup` updates marked Memory sections in `AGENTS.md` and

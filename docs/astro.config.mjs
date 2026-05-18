@@ -39,6 +39,7 @@ export default defineConfig({
             "capabilities",
             "mental-model",
             "specializing-memory",
+            "memory-recipes",
             "demand-driven-memory",
             "wiki-workflow"
           ]

@@ -155,6 +155,7 @@ memory view --open
 memory docs
 memory docs getting-started
 memory docs demand-driven-memory
+memory docs memory-recipes
 memory docs agent-recipes
 memory docs agent-integration --open
 ```

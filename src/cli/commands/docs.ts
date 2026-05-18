@@ -95,6 +95,14 @@ const DOC_TOPICS = [
     aliases: ["specialize", "customize", "tailor", "project-memory"]
   },
   {
+    topic: "memory-recipes",
+    title: "Memory Recipes",
+    description: "Copyable prompts for specializing Memory without adding product surface.",
+    file: "memory-recipes.md",
+    path: "/memory-recipes/",
+    aliases: ["prompt-recipes", "memory-prompts", "specialization-recipes"]
+  },
+  {
     topic: "demand-driven-memory",
     title: "Demand-driven memory",
     description: "Use agent failure, confusion, and correction to improve durable project memory.",
