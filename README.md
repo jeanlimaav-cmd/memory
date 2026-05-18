@@ -34,7 +34,7 @@ Use Memory when:
 - Your projects are growing past one-off experiments and the useful discoveries
   from agent work need to survive into the next session.
 - You use more than one agent or assistant and do not want to maintain separate
-  project facts in `AGENTS.md`, `CLAUDE.md`, Cursor rules, copied prompts, and
+  project facts in `AGENTS.md`, `CLAUDE.md`, Cursor rules, prompt snippets, and
   chat history.
 - You want agents to load focused context for the task instead of spending
   tokens on broad rebriefing or stale instruction files.
