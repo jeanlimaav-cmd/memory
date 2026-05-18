@@ -178,7 +178,7 @@ describe("viewer Obsidian export action", () => {
 async function openFirstProject(page: Page): Promise<void> {
   await page.locator('[data-testid="projects-view"]').waitFor();
   await page.locator('[data-testid^="project-open-"]').first().click();
-  await page.locator('[data-testid="memory-list-view"]').waitFor();
+  await page.locator('[data-testid="graph-view"]').waitFor();
 }
 
 async function openSidebar(page: Page): Promise<void> {

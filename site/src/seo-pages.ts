@@ -30,11 +30,11 @@ export const keywordLandingPages: KeywordLandingPage[] = [
     slug: "persistent-memory-ai-coding-agents",
     title: "Persistent Memory for AI Coding Agents - Memory by Aictx",
     description:
-      "Memory by Aictx gives Claude Code, Codex, Cursor, Cline, and MCP-capable AI coding assistants persistent, local, reviewable, auto-maintained project memory across sessions.",
+      "Memory by Aictx helps AI coding agents do better repeated work with persistent, local, reviewable project memory that reduces repeated briefing and context waste.",
     kicker: "Persistent Memory",
     h1: "Persistent memory for AI coding agents that stays in your repo.",
     lead:
-      "Memory gives coding agents a local project memory layer for product intent, architecture decisions, repo conventions, workflows, and gotchas. Agents load a task-focused context pack before work and save durable knowledge after meaningful changes.",
+      "Memory gives coding agents a local project memory layer for product intent, architecture decisions, repo conventions, workflows, and gotchas. Agents load a task-focused context pack before work, avoid re-discovering the same facts, and save durable knowledge after meaningful changes.",
     primaryCta: {
       href: "https://docs.aictx.dev/getting-started/",
       label: "Install Memory"
@@ -54,19 +54,19 @@ export const keywordLandingPages: KeywordLandingPage[] = [
     sections: [
       {
         eyebrow: "Cross-session context",
-        title: "Stop losing project decisions between agent sessions.",
+        title: "Start the next session from the decisions that already exist.",
         body:
           "Instead of rebuilding context from chat history, Memory stores reusable project knowledge as local, reviewable files that future coding agents can load on demand."
       },
       {
         eyebrow: "Repo-native storage",
-        title: "Persistent does not have to mean hosted.",
+        title: "Keep durable memory observable in the repo.",
         body:
-          "Memory keeps canonical knowledge under `.memory/`, so teams can inspect changes, review them in Git, and repair stale facts instead of trusting an opaque memory service."
+          "Memory keeps canonical knowledge under `.memory/`, so developers can inspect changes, review them in Git, and repair stale facts instead of trusting an opaque memory service."
       },
       {
         eyebrow: "Focused retrieval",
-        title: "Load the right memory, not every note.",
+        title: "Spend context on what helps the current task.",
         body:
           "`memory load` compiles a small context pack for coding, debugging, review, architecture, or onboarding work, reducing token noise while keeping important constraints active."
       }
@@ -132,7 +132,7 @@ export const keywordLandingPages: KeywordLandingPage[] = [
     slug: "claude-code-memory",
     title: "Claude Code Project Memory - Memory by Aictx",
     description:
-      "Use Memory with Claude Code to keep CLAUDE.md small while durable project context, decisions, workflows, and gotchas live in local project memory.",
+      "Use Memory with Claude Code to keep CLAUDE.md small while repeated project context, decisions, workflows, and gotchas live in local reviewable memory.",
     kicker: "Claude Code Memory",
     h1: "Claude Code project memory without turning CLAUDE.md into a wiki.",
     lead:
@@ -161,7 +161,7 @@ export const keywordLandingPages: KeywordLandingPage[] = [
       },
       {
         eyebrow: "Session continuity",
-        title: "Carry durable context across Claude Code sessions.",
+        title: "Reduce repeated briefings across Claude Code sessions.",
         body:
           "Claude Code can start from `memory load` instead of asking you to repeat repository context after every new session or context reset."
       },
@@ -182,7 +182,7 @@ export const keywordLandingPages: KeywordLandingPage[] = [
     slug: "codex-memory",
     title: "Codex Project Memory - Memory by Aictx",
     description:
-      "Use Memory with Codex and AGENTS.md to give coding agents local project memory for decisions, conventions, workflows, gotchas, and source-backed context.",
+      "Use Memory with Codex and AGENTS.md to give coding agents local reviewable project memory for repeated decisions, conventions, workflows, gotchas, and source-backed context.",
     kicker: "Codex Memory",
     h1: "Codex project memory for AGENTS.md-based workflows.",
     lead:
@@ -211,13 +211,13 @@ export const keywordLandingPages: KeywordLandingPage[] = [
       },
       {
         eyebrow: "Task-shaped context",
-        title: "Give Codex the context needed for the current edit.",
+        title: "Give Codex useful context before it spends time searching.",
         body:
           "`memory load \"<task>\"` ranks relevant decisions, constraints, workflows, gotchas, and source-backed syntheses before Codex touches the code."
       },
       {
         eyebrow: "Reviewable saves",
-        title: "Make useful discoveries survive the chat.",
+        title: "Make useful discoveries survive as project state.",
         body:
           "After meaningful work, `memory remember --stdin` saves durable context as local files so the next Codex session can start from current project memory."
       }
@@ -232,7 +232,7 @@ export const keywordLandingPages: KeywordLandingPage[] = [
     slug: "cursor-memory",
     title: "Cursor Project Memory - Memory by Aictx",
     description:
-      "Use Memory with Cursor rules to keep project context local, reviewable, and task-focused for AI coding assistants across sessions.",
+      "Use Memory with Cursor rules to keep repeated project context local, reviewable, and task-focused for AI coding assistants across sessions.",
     kicker: "Cursor Memory",
     h1: "Cursor project memory that stays local and reviewable.",
     lead:
@@ -267,7 +267,7 @@ export const keywordLandingPages: KeywordLandingPage[] = [
       },
       {
         eyebrow: "Cross-tool continuity",
-        title: "Share durable context with other coding agents.",
+        title: "Share durable context without duplicating project facts.",
         body:
           "The same project memory can support Cursor, Codex, Claude Code, Cline, OpenCode, and MCP-capable clients without duplicating facts across tools."
       }

@@ -57,6 +57,23 @@ can inspect memory and export Obsidian projections".
 
 Memory keeps that memory local, explicit, and reviewable.
 
+## Choose your path
+
+- New to Memory: start with [Getting started](/getting-started/) to install,
+  initialize a repo, and run the first load/save/diff loop.
+- Using Codex, Claude Code, Cursor, Cline, OpenCode, or MCP-capable clients:
+  use [Agent recipes](/agent-recipes/) for copyable setup prompts.
+- Trying to keep agent instruction files small: read the
+  [Mental model](/mental-model/) and [Specializing Memory](/specializing-memory/)
+  to separate behavior guidance from durable project knowledge.
+- Want reviewable local memory: use [Capabilities](/capabilities/) for the
+  load, inspect, diff, viewer, audit, and repair workflows.
+- Managing repeated or multi-project agent work: use
+  [Memory Recipes](/memory-recipes/) and [Wiki workflow](/wiki-workflow/) to
+  capture product intent, architecture, workflows, gotchas, and source-backed
+  syntheses.
+- Adding MCP later: read the [MCP guide](/mcp/) after the CLI workflow is clear.
+
 ## First-time setup prompt
 
 Copy this prompt into [Codex](https://developers.openai.com/codex/cli),

@@ -486,6 +486,85 @@ h1 {
   letter-spacing: 0.08em;
 }
 
+.payoff-section {
+  scroll-margin-top: 72px;
+  padding: 38px 20px 44px;
+  background: #f1efe8;
+  border-top: 1px solid rgba(17, 18, 20, 0.07);
+  border-bottom: 1px solid rgba(17, 18, 20, 0.08);
+}
+
+.payoff-inner {
+  display: grid;
+  gap: 24px;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.payoff-heading {
+  max-width: 760px;
+}
+
+.payoff-heading p:not(.section-kicker) {
+  max-width: 640px;
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.payoff-grid {
+  display: grid;
+  border-top: 1px solid rgba(17, 18, 20, 0.12);
+}
+
+.payoff-grid article {
+  display: grid;
+  gap: 9px;
+  padding: 17px 0 18px;
+  border-bottom: 1px solid rgba(17, 18, 20, 0.12);
+}
+
+.payoff-grid span {
+  color: #858a90;
+  font-size: 11px;
+  font-weight: 780;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.payoff-grid strong {
+  color: #171819;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.payoff-grid p {
+  max-width: 520px;
+  margin: 0;
+  color: #62676d;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.payoff-strip {
+  display: grid;
+  gap: 1px;
+  overflow: hidden;
+  background: rgba(17, 18, 20, 0.12);
+  border: 1px solid rgba(17, 18, 20, 0.12);
+  border-radius: 8px;
+}
+
+.payoff-strip span {
+  min-width: 0;
+  padding: 13px 14px;
+  color: #202321;
+  background: rgba(255, 255, 252, 0.72);
+  font-size: 13px;
+  font-weight: 760;
+}
+
 .split-section,
 .impact-section,
 .demo-section,
@@ -1939,6 +2018,10 @@ h3 {
   gap: 14px;
 }
 
+.workflow-list {
+  margin-bottom: 0;
+}
+
 .use-cases-post-heading {
   margin-top: 42px;
 }
@@ -1994,6 +2077,24 @@ h3 {
   border-radius: 999px;
   font-size: 12px;
   font-weight: 720;
+}
+
+.workflow-card {
+  background: rgba(255, 255, 252, 0.58);
+  border: 1px solid rgba(17, 18, 20, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 14px 34px rgba(37, 39, 36, 0.045);
+}
+
+.workflow-card a {
+  display: grid;
+  align-content: start;
+  min-height: 178px;
+  padding: 18px;
+}
+
+.workflow-card h2 {
+  font-size: clamp(21px, 5vw, 29px);
 }
 
 .keyword-tags a {
@@ -2320,6 +2421,35 @@ h3 {
     padding: 30px clamp(72px, 9vw, 132px);
   }
 
+  .payoff-section {
+    padding: clamp(46px, 4.4vw, 64px) clamp(72px, 9vw, 132px);
+  }
+
+  .payoff-inner {
+    grid-template-columns: minmax(230px, 0.72fr) minmax(0, 1.28fr);
+    gap: clamp(28px, 4.5vw, 64px);
+    align-items: start;
+  }
+
+  .payoff-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .payoff-grid article {
+    min-height: 178px;
+    padding: 20px clamp(18px, 2.5vw, 28px) 22px 0;
+  }
+
+  .payoff-grid article:nth-child(even) {
+    padding-left: clamp(18px, 2.5vw, 28px);
+    border-left: 1px solid rgba(17, 18, 20, 0.12);
+  }
+
+  .payoff-strip {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .steps {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 14px;
@@ -2415,6 +2545,24 @@ h3 {
 
   .blog-list {
     gap: 0;
+  }
+
+  .workflow-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .post-card.workflow-card a {
+    display: grid;
+    grid-template-columns: none;
+    gap: 0;
+    padding: 22px;
+  }
+
+  .post-card.workflow-card h2,
+  .post-card.workflow-card p,
+  .post-card.workflow-card .post-tags {
+    grid-column: auto;
   }
 
   .post-card a {

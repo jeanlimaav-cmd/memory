@@ -27,13 +27,19 @@ starts. Activate Memory once in a repo: it gives agents a local wiki of durable
 project knowledge, wires short agent guidance into the project, and loads only
 the pages that matter for the current task.
 
-Use it when you want:
+Use Memory when:
 
-- New agents to read the repo wiki instead of asking for a long briefing.
-- Durable decisions, workflows, gotchas, and source-backed summaries to survive
-  across sessions, branches, and reviews.
-- Local files and Git review instead of hosted memory, a vector database, or
-  another prompt you have to manually keep current.
+- You open new AI coding sessions on the same repo and keep repeating the same
+  product intent, architecture choices, setup steps, or known traps.
+- Your projects are growing past one-off experiments and the useful discoveries
+  from agent work need to survive into the next session.
+- You use more than one agent or assistant and do not want to maintain separate
+  project facts in `AGENTS.md`, `CLAUDE.md`, Cursor rules, copied prompts, and
+  chat history.
+- You want agents to load focused context for the task instead of spending
+  tokens on broad rebriefing or stale instruction files.
+- You want durable project memory to stay local, inspectable, and reviewable in
+  Git instead of disappearing into hosted memory or an opaque retrieval service.
 
 This repository publishes the npm package `@aictx/memory` and the Homebrew
 formula `aictx/tap/memory`.
@@ -47,6 +53,15 @@ MCP-capable clients. Use the `memory` CLI by default, then add the local
 Memory is for the repo wiki agents actually need: durable project context that
 should survive between agents, sessions, branches, and reviews without making
 you re-teach the repo each time.
+
+The value stack is practical:
+
+- Better agent work: agents start with the product, architecture, workflow, and
+  gotcha context that matters for the current task.
+- Less wasted context: `memory load` builds a focused pack instead of asking you
+  to paste the same briefing or carry every project fact in a giant prompt.
+- Reviewable memory: saved knowledge is local project state that humans can
+  inspect, diff, repair, and keep honest.
 
 - Why not `AGENTS.md` only? Agent instruction files are good operating manuals.
   They become too broad and static when they also try to be the whole project

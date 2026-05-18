@@ -7,6 +7,37 @@ import { keywordLandingPages, keywordPagePath } from "../../seo-pages";
 const posts = (await getCollection("blog")).sort(
   (left, right) => right.data.publishedAt.getTime() - left.data.publishedAt.getTime()
 );
+
+const workflowPaths = [
+  {
+    title: "Growing agent-built projects",
+    description:
+      "Keep product intent, architecture choices, open questions, and setup paths visible as experiments become real repositories.",
+    href: "/blog/watching-multiple-agent-built-projects-with-memory/",
+    tags: ["Project state", "Viewer", "Multi-project"]
+  },
+  {
+    title: "Professional agent-assisted development",
+    description:
+      "Give recurring coding sessions task-shaped context, reduce repeated briefing, and keep durable discoveries reviewable in Git.",
+    href: "/persistent-memory-ai-coding-agents/",
+    tags: ["Persistent memory", "Review", "Context"]
+  },
+  {
+    title: "Small agent instruction files",
+    description:
+      "Use `AGENTS.md`, `CLAUDE.md`, and Cursor rules for behavior while Memory carries changing project knowledge.",
+    href: "/blog/keeping-agents-md-and-claude-md-small/",
+    tags: ["AGENTS.md", "CLAUDE.md", "Rules"]
+  },
+  {
+    title: "Shared context across agent tools",
+    description:
+      "Let Codex, Claude Code, Cursor, Cline, OpenCode, and MCP-capable clients load the same local project memory.",
+    href: "/codex-memory/",
+    tags: ["Codex", "Claude Code", "Cursor"]
+  }
+];
 ---
 
 <BaseLayout
@@ -19,14 +50,40 @@ const posts = (await getCollection("blog")).sort(
         <p class="section-kicker">Use cases</p>
         <h1 id="use-cases-title">Where durable context helps AI coding agents.</h1>
         <p>
-          Practical notes on keeping product intent, repo conventions, and sharp edges available
-          across agent sessions.
+          Practical paths for better agent work, fewer repeated briefings, and
+          reviewable project memory as repos keep evolving.
         </p>
       </div>
     </section>
 
     <section class="blog-list-section" aria-label="Use case articles">
       <div class="section-heading">
+        <h2>Start with the pain you recognize.</h2>
+        <p>
+          Memory is useful when context starts repeating, drifting, or hiding in
+          chat history instead of becoming project state.
+        </p>
+      </div>
+
+      <div class="blog-list workflow-list">
+        {
+          workflowPaths.map((path) => (
+            <article class="post-card workflow-card">
+              <a href={path.href}>
+                <h2>{path.title}</h2>
+                <p>{path.description}</p>
+                <div class="post-tags" aria-label={`${path.title} topics`}>
+                  {path.tags.map((tag) => (
+                    <span>{tag}</span>
+                  ))}
+                </div>
+              </a>
+            </article>
+          ))
+        }
+      </div>
+
+      <div class="section-heading use-cases-post-heading">
         <h2>Guides by workflow.</h2>
         <p>
           Search-focused guides for persistent memory, MCP memory, and

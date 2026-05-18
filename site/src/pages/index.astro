@@ -54,39 +54,95 @@ const viewerUrl = "https://demo.aictx.dev/?token=demo";
         <div class="section-heading">
           <h2 id="context-title">Why Memory?</h2>
           <p>
-            Give the repo a wiki agents can load, maintain, and inspect under
-            review.
+            Give agents durable project context they can load, keep current, and
+            leave reviewable without turning every prompt or instruction file
+            into a wiki.
           </p>
         </div>
 
         <div class="comparison comparison-why" aria-label="Why use Memory">
           <div>
             <span>01</span>
-            <strong>Start the repo wiki.</strong>
+            <strong>Preserve decisions that should survive.</strong>
             <p>
-              Capture product intent, decisions, workflows, conventions, and
-              gotchas in a local wiki agents can reuse instead of asking you to
-              repeat.
+              Keep product intent, architecture choices, workflows, conventions,
+              and gotchas available after the chat that discovered them is gone.
             </p>
           </div>
           <div>
             <span>02</span>
-            <strong>Load the right page.</strong>
+            <strong>Load only what the task needs.</strong>
             <p>
-              Agents pull focused wiki context before work &mdash; no long
-              briefing, giant prompt, vector database, or retrieval stack to
-              maintain.
+              Agents pull focused context before work, so repeated briefings and
+              stale all-purpose prompts do not consume the attention budget.
             </p>
           </div>
           <div>
             <span>03</span>
-            <strong>Review what changed.</strong>
+            <strong>Make memory observable.</strong>
             <p>
-              Inspect the same typed entries agents use, including objects,
-              schema, relations, provenance, and graph context, in a local
-              viewer.
+              Inspect the same local entries agents use, review the diff, and
+              repair stale facts before they steer the next session.
             </p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="payoff-section"
+      id="payoff"
+      aria-labelledby="payoff-title"
+    >
+      <div class="payoff-inner">
+        <div class="payoff-heading">
+          <p class="section-kicker">When it pays off</p>
+          <h2 id="payoff-title">When context starts repeating, Memory becomes leverage.</h2>
+          <p>
+            It is useful long before a repo is huge: whenever decisions,
+            corrections, and workflows should outlive one agent session.
+          </p>
+        </div>
+
+        <div class="payoff-grid" aria-label="When Memory is useful">
+          <article>
+            <span>Same repo, new session</span>
+            <strong>Agents stop starting from a blank chat.</strong>
+            <p>
+              The next session can load the project shape, active constraints,
+              setup path, and sharp edges before touching code.
+            </p>
+          </article>
+          <article>
+            <span>Scattered decisions</span>
+            <strong>Project knowledge gets one reviewable home.</strong>
+            <p>
+              Product notes, architecture choices, and user corrections do not
+              have to live across prompts, docs, and old transcripts.
+            </p>
+          </article>
+          <article>
+            <span>Several agent tools</span>
+            <strong>Different clients can share the same context.</strong>
+            <p>
+              Codex, Claude Code, Cursor, Cline, OpenCode, and MCP-capable tools
+              can all work from the same local project memory.
+            </p>
+          </article>
+          <article>
+            <span>Useful discoveries</span>
+            <strong>The next agent inherits the durable parts.</strong>
+            <p>
+              Save the reusable fact, workflow, gotcha, or synthesis instead of
+              asking future agents to mine the whole chat.
+            </p>
+          </article>
+        </div>
+
+        <div class="payoff-strip" aria-label="Memory value stack">
+          <span>Better starting context</span>
+          <span>Less repeated briefing</span>
+          <span>Reviewable memory trail</span>
         </div>
       </div>
     </section>
@@ -99,8 +155,9 @@ const viewerUrl = "https://demo.aictx.dev/?token=demo";
       <div class="section-heading">
         <h2 id="before-after-title">Proof in the first five minutes.</h2>
         <p>
-          Instead of reopening old decisions, the agent starts with a small,
-          task-shaped context pack before the edit begins.
+          The agent starts with the right durable context, spends less time
+          rediscovering old decisions, and leaves a memory trail you can review
+          before the next session depends on it.
         </p>
       </div>
 
