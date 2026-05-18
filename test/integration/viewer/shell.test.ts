@@ -442,6 +442,10 @@ describe("read-only viewer shell", () => {
       await page.getByRole("button", { name: "Open project" }).first().click();
 
       await expectText(page, '[data-testid="graph-view"]', "Graph");
+      await expectText(page, '[data-testid="graph-mobile-selection"]', "Selected object");
+      await expectText(page, '[data-testid="graph-mobile-selection"]', "Current Architecture");
+      const mobileGraphBox = await page.locator('[data-testid="relation-graph"]').boundingBox();
+      expect(mobileGraphBox?.height).toBeLessThan(390);
       await openSidebar(page);
       await page.locator('[data-testid="nav-memories"]').click();
       await expectSidebarClosed(page);

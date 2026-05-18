@@ -2828,6 +2828,51 @@
               </div>
             </div>
 
+            <section class="graph-mobile-selection" aria-live="polite" data-testid="graph-mobile-selection">
+              {#if selectedGraphObject !== null}
+                <div>
+                  <p class="eyebrow">Selected object</p>
+                  <h3>{selectedGraphObject.title}</h3>
+                  <p class="mono">{selectedGraphObject.id}</p>
+                </div>
+                <div class="graph-mobile-selection-meta" aria-label="Selected object summary">
+                  <span>{selectedGraphObject.type}</span>
+                  <span>{selectedGraphObject.status}</span>
+                  <span>{relationsForObject(selectedGraphObject.id).length} {relationsForObject(selectedGraphObject.id).length === 1 ? "relation" : "relations"}</span>
+                </div>
+                <div class="graph-mobile-selection-actions">
+                  <button type="button" onclick={() => selectRelated(selectedGraphObject.id)}>
+                    Open object
+                  </button>
+                  <button type="button" onclick={focusGraphSelection}>Focus</button>
+                </div>
+              {:else if selectedGraphRelation !== null}
+                <div>
+                  <p class="eyebrow">Selected relation</p>
+                  <h3>{selectedGraphRelation.predicate}</h3>
+                  <p class="mono">{selectedGraphRelation.id}</p>
+                </div>
+                <div class="graph-mobile-selection-meta" aria-label="Selected relation summary">
+                  <span>{selectedGraphRelation.status}</span>
+                  <span>{selectedGraphRelation.confidence ?? "not set"}</span>
+                </div>
+                <div class="graph-mobile-selection-actions">
+                  <button type="button" onclick={() => selectGraphObject(selectedGraphRelation.from)}>
+                    Source
+                  </button>
+                  <button type="button" onclick={() => selectGraphObject(selectedGraphRelation.to)}>
+                    Target
+                  </button>
+                </div>
+              {:else}
+                <div>
+                  <p class="eyebrow">Selection</p>
+                  <h3>{graphObjects.length} visible objects</h3>
+                  <p>{graphRelations.length} relation links. Tap a node or link to inspect it.</p>
+                </div>
+              {/if}
+            </section>
+
             <section class="graph-workspace">
               <div class="graph-canvas-wrap">
                 <div
@@ -5463,6 +5508,10 @@
     border-top-style: dashed;
   }
 
+  .graph-mobile-selection {
+    display: none;
+  }
+
   .graph-workspace {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(280px, 340px);
@@ -5480,14 +5529,15 @@
 
   .graph-canvas-wrap {
     position: relative;
-    min-height: 640px;
+    height: clamp(360px, calc(100svh - 330px), 640px);
+    min-height: 0;
     overflow: hidden;
   }
 
   .graph-canvas {
     width: 100%;
     height: 100%;
-    min-height: 640px;
+    min-height: 0;
     background:
       radial-gradient(circle at 18% 18%, rgb(47 93 98 / 7%), transparent 26%),
       linear-gradient(rgb(238 234 225 / 72%) 1px, transparent 1px),
@@ -5523,7 +5573,9 @@
 
   .graph-inspector {
     align-self: stretch;
-    min-height: 640px;
+    min-height: 0;
+    max-height: clamp(360px, calc(100svh - 330px), 640px);
+    overflow-y: auto;
     padding: 18px;
     background: linear-gradient(180deg, #ffffff 0%, #fbfaf7 100%);
   }
@@ -6198,10 +6250,82 @@
       grid-template-columns: 1fr;
     }
 
+    .graph-mobile-selection {
+      position: sticky;
+      top: 8px;
+      z-index: 5;
+      display: grid;
+      gap: 10px;
+      border: 1px solid #d8cec0;
+      border-radius: 8px;
+      padding: 12px;
+      background: rgb(255 253 249 / 96%);
+      box-shadow:
+        0 1px 2px rgb(39 31 21 / 5%),
+        0 12px 28px rgb(39 31 21 / 10%);
+      backdrop-filter: blur(12px);
+    }
+
+    .graph-mobile-selection h3,
+    .graph-mobile-selection p {
+      margin: 0;
+    }
+
+    .graph-mobile-selection h3 {
+      color: #24231f;
+      font-size: 1.02rem;
+      line-height: 1.18;
+      font-weight: 820;
+      overflow-wrap: anywhere;
+    }
+
+    .graph-mobile-selection .mono,
+    .graph-mobile-selection p:not(.eyebrow) {
+      margin-top: 4px;
+      color: #6f6a62;
+      font-size: 0.78rem;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+    }
+
+    .graph-mobile-selection-meta,
+    .graph-mobile-selection-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .graph-mobile-selection-meta span {
+      border: 1px solid #ded6ca;
+      border-radius: 999px;
+      padding: 3px 8px;
+      color: #59544c;
+      background: #f8f5ef;
+      font-size: 0.74rem;
+      line-height: 1.15;
+      font-weight: 700;
+    }
+
+    .graph-mobile-selection-actions button {
+      min-height: 34px;
+      border: 1px solid #d8d0c3;
+      border-radius: 7px;
+      padding: 7px 10px;
+      background: #fffaf1;
+      color: #302e2a;
+      font-size: 0.82rem;
+      font-weight: 780;
+    }
+
     .graph-canvas-wrap,
-    .graph-canvas,
+    .graph-canvas {
+      height: clamp(240px, 34svh, 340px);
+      min-height: 0;
+    }
+
     .graph-inspector {
-      min-height: 420px;
+      min-height: 0;
+      max-height: none;
     }
 
     .graph-toolbar {
