@@ -1,31 +1,31 @@
 {
   "body_path": "memory/syntheses/feature-map.md",
-  "content_hash": "sha256:2c3815603a24684c18528f03db5b861d295e201e5b4d2c8ebd9e1814dce06455",
-  "created_at": "2026-05-16T18:52:44+02:00",
+  "content_hash": "sha256:055ce4ebaf89044fd92c30cd15c0585f481a99fad32bc691400b8ab027c60a18",
+  "created_at": "2026-05-18T15:00:40+02:00",
   "evidence": [
     {
       "id": "source.package-json",
       "kind": "source"
     },
     {
-      "id": "source.readme",
+      "id": "source.src-cli-commands-audit-ts",
       "kind": "source"
     },
     {
-      "id": "source.docs-src-content-docs-agent-integration",
+      "id": "source.src-cli-commands-check-ts",
       "kind": "source"
     },
     {
-      "id": "src/discipline/audit.ts",
-      "kind": "file"
+      "id": "source.src-cli-commands-diff-ts",
+      "kind": "source"
     },
     {
-      "id": "src/discipline/suggest.ts",
-      "kind": "file"
+      "id": "source.src-cli-commands-docs-ts",
+      "kind": "source"
     },
     {
-      "id": "viewer/src/App.svelte",
-      "kind": "file"
+      "id": "source.src-cli-commands-export-ts",
+      "kind": "source"
     }
   ],
   "facets": {
@@ -35,12 +35,7 @@
       "src/cli/commands/check.ts",
       "src/cli/commands/diff.ts",
       "src/cli/commands/docs.ts",
-      "src/cli/commands/export.ts",
-      "src/cli/commands/suggest.ts",
-      "src/discipline/audit.ts",
-      "src/discipline/suggest.ts",
-      "src/app/operations.ts",
-      "viewer/src/App.svelte"
+      "src/cli/commands/export.ts"
     ],
     "category": "feature-map",
     "load_modes": [
@@ -52,7 +47,7 @@
   "scope": {
     "branch": null,
     "kind": "project",
-    "project": "project.memory",
+    "project": "project.aictx",
     "task": null
   },
   "source": {
@@ -66,5 +61,5 @@
   ],
   "title": "Feature map",
   "type": "synthesis",
-  "updated_at": "2026-05-18T14:02:38+02:00"
+  "updated_at": "2026-05-18T15:00:40+02:00"
 }

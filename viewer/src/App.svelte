@@ -6204,24 +6204,45 @@
       min-height: 420px;
     }
 
-    .graph-toolbar,
-    .graph-actions {
-      align-items: stretch;
-      flex-direction: column;
+    .graph-toolbar {
+      align-items: center;
+      flex-direction: row;
     }
 
-    .graph-filter-tabs,
+    .graph-filter-tabs {
+      flex: 1 1 260px;
+      min-width: min(100%, 220px);
+    }
+
     .graph-actions {
-      width: 100%;
+      flex: 0 0 auto;
+      flex-wrap: nowrap;
+      justify-content: flex-end;
+      width: auto;
     }
 
     .graph-legend {
       justify-content: flex-start;
     }
 
-    .graph-filter-tabs button,
+    .graph-filter-tabs button {
+      flex: 1 1 0;
+    }
+
     .graph-actions button {
-      flex: 1 1 auto;
+      flex: 0 0 38px;
+      width: 38px;
+      min-width: 38px;
+      padding-right: 0;
+      padding-left: 0;
+    }
+
+    .graph-actions [data-testid="graph-fit"] {
+      flex-basis: auto;
+      width: auto;
+      min-width: 48px;
+      padding-right: 10px;
+      padding-left: 10px;
     }
 
     .list-controls {

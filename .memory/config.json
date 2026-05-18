@@ -8,8 +8,8 @@
     "saveContextPacks": false
   },
   "project": {
-    "id": "project.memory",
-    "name": "Memory"
+    "id": "project.aictx",
+    "name": "Aictx"
   },
   "version": 4
 }

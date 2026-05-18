@@ -1,16 +1,16 @@
 {
-  "body_path": "memory/sources/readme.md",
-  "content_hash": "sha256:2b78295c631da3426a0a7fa53d9cdf3c8d80dbe5d1f024e906227762fc823720",
+  "body_path": "memory/sources/src-cli-commands-diff-ts.md",
+  "content_hash": "sha256:e988f6c7033952e5ad33388c01ab61a3922d82778c2e1b53b6ae73bc6ea1db0e",
   "created_at": "2026-05-18T15:00:40+02:00",
   "evidence": [
     {
-      "id": "README.md",
+      "id": "src/cli/commands/diff.ts",
       "kind": "file"
     }
   ],
   "facets": {
     "applies_to": [
-      "README.md"
+      "src/cli/commands/diff.ts"
     ],
     "category": "source",
     "load_modes": [
@@ -18,12 +18,11 @@
       "architecture"
     ]
   },
-  "id": "source.readme",
+  "id": "source.src-cli-commands-diff-ts",
   "origin": {
-    "digest": "sha256:ee73b9c27052e6850eb1cd079518e94d5a1e8e4d6f3bb59ddd2afc7e4204015a",
+    "digest": "sha256:5e5d92a91eb4f98d230f8e60179444fdbb4f2fa24617741b153cb6306ab5646e",
     "kind": "file",
-    "locator": "README.md",
-    "media_type": "text/markdown"
+    "locator": "src/cli/commands/diff.ts"
   },
   "scope": {
     "branch": null,
@@ -39,7 +38,7 @@
   "tags": [
     "source"
   ],
-  "title": "Source: README.md",
+  "title": "Source: src/cli/commands/diff.ts",
   "type": "source",
   "updated_at": "2026-05-18T15:00:40+02:00"
 }

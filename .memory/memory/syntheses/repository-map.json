@@ -1,7 +1,7 @@
 {
   "body_path": "memory/syntheses/repository-map.md",
-  "content_hash": "sha256:7ed08a1523ad6f4bf73cff839aa8ca96da067091b95de7429ec128f1c58d70ee",
-  "created_at": "2026-05-16T18:52:44+02:00",
+  "content_hash": "sha256:8a1d709099a47d97e296f5c5ac02367b22c825ef188b3b940004c11d0b4c4e95",
+  "created_at": "2026-05-18T15:00:40+02:00",
   "evidence": [
     {
       "id": "source.package-json",
@@ -93,7 +93,7 @@
   "scope": {
     "branch": null,
     "kind": "project",
-    "project": "project.memory",
+    "project": "project.aictx",
     "task": null
   },
   "source": {
@@ -107,5 +107,5 @@
   ],
   "title": "Repository map",
   "type": "synthesis",
-  "updated_at": "2026-05-16T18:52:44+02:00"
+  "updated_at": "2026-05-18T15:00:40+02:00"
 }
