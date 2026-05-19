@@ -101,8 +101,13 @@ lower-level empty-storage initializer for automation, tests, or manual
 workflows. `memory setup --dry-run` previews the conservative bootstrap patch
 without initializing storage or writing repo files. `memory setup --force
 --dry-run` previews reset/setup behavior without deleting anything. `memory
-audit` includes role coverage gaps, but missing roles are not `memory check`
-failures.
+setup --review-agent-guidance` prints a follow-up prompt for the active agent
+to review existing `AGENTS.md` and `CLAUDE.md` content outside Memory's managed
+block. Treat that guidance as candidate evidence, validate it against the repo,
+and save durable knowledge with `memory remember --stdin` only when useful.
+Memory does not automatically infer semantic memory from free-form guidance.
+`memory audit` includes role coverage gaps, but missing roles are not `memory
+check` failures.
 
 Use `memory wiki ingest --stdin` when a source-backed synthesis should be filed
 with a `source` record and raw-source `origin` metadata in one atomic patch.

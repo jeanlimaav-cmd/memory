@@ -234,6 +234,12 @@ For the agent-led first-run path, use `memory setup`, then run
 `memory lens project-map` for a readable overview or
 `memory load "onboard to this repository"` to verify retrieval.
 
+When a repository already has meaningful `AGENTS.md` or `CLAUDE.md` content,
+run `memory setup --review-agent-guidance`. Setup still writes only the
+conservative deterministic bootstrap memory; the flag prints a follow-up prompt
+for the active agent to validate guidance against the repo and save only durable
+knowledge with `memory remember --stdin`.
+
 Use `memory handoff update --stdin` only for unfinished branch continuity that
 should not become project truth yet.
 

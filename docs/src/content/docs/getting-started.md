@@ -68,11 +68,16 @@ Useful setup variants:
 memory setup --dry-run
 memory setup --no-view
 memory setup --open
+memory setup --review-agent-guidance
 ```
 
 - `--dry-run` previews setup without writing memory or repo files.
 - `--no-view` skips viewer startup for scripts and agent runs.
 - `--open` opens the viewer in the default browser after setup.
+- `--review-agent-guidance` prints a prompt for your current agent to review
+  existing `AGENTS.md` and `CLAUDE.md` content outside Memory's managed block.
+  This is a second step: Memory does not automatically infer semantic memory
+  from free-form agent guidance.
 
 :::tip
 `memory init` is the lower-level empty-storage initializer. Use it for tests,

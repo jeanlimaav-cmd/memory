@@ -26,6 +26,7 @@ import {
 } from "./view.js";
 
 type CliOutputWriter = (text: string) => void;
+const AGENT_GUIDANCE_REVIEW_FILES = ["AGENTS.md", "CLAUDE.md"] as const;
 
 export interface RegisterSetupCommandOptions {
   cwd: string;
@@ -40,6 +41,7 @@ interface SetupCommandFlags {
   dryRun?: boolean;
   view?: boolean;
   open?: boolean;
+  reviewAgentGuidance?: boolean;
 }
 
 interface RunSetupOptions {
@@ -50,6 +52,13 @@ interface SetupPatchSummary {
   operations: string[];
   memory_ids: ObjectId[];
   relation_ids: RelationId[];
+}
+
+interface AgentGuidanceReviewData {
+  requested: boolean;
+  files: string[];
+  prompt: string | null;
+  skipped_reason: string | null;
 }
 
 interface SetupData {
@@ -70,6 +79,7 @@ interface SetupData {
   viewer_url: string | null;
   viewer_log_path: string | null;
   next_step: string | null;
+  agent_guidance_review: AgentGuidanceReviewData;
 }
 
 export function registerSetupCommand(
@@ -85,6 +95,7 @@ export function registerSetupCommand(
     .option("--view", "Start the local viewer after setup (default for human output).")
     .option("--no-view", "Skip local viewer startup after setup.")
     .option("--open", "Open the viewer in the default browser after setup.")
+    .option("--review-agent-guidance", "Print a prompt for agent-led semantic review of existing AGENTS.md and CLAUDE.md guidance after setup.")
     .action(async (flags: SetupCommandFlags, command: Command) => {
       const json = isJsonMode(command);
       const result = await runSetup(options.cwd, flags, options.detacher, { json });
@@ -208,7 +219,8 @@ async function runSetup(
       next_step:
         save !== null
           ? "Run `memory lens project-map` for a readable project view, or `memory load \"onboard to this repository\"` for task-focused context."
-          : "No bootstrap memory patch to apply."
+          : "No bootstrap memory patch to apply.",
+      agent_guidance_review: buildAgentGuidanceReview(flags, { dryRun: false })
     },
     warnings,
     meta: checked.meta
@@ -261,7 +273,8 @@ async function runSetupDryRun(
       viewer_log_path: null,
       next_step: proposal.proposed
         ? "Run `memory setup` to apply the proposed bootstrap memory patch."
-        : "No bootstrap memory patch to apply."
+        : "No bootstrap memory patch to apply.",
+      agent_guidance_review: buildAgentGuidanceReview(flags, { dryRun: true })
     },
     warnings: [...preview.warnings, ...viewerWarning],
     meta: preview.meta
@@ -356,7 +369,8 @@ function renderSetupData(data: SetupData): string {
       : [`Memory diff files changed: ${data.diff.changed_files.length}`]),
     ...(data.viewer_url === null ? [] : [`Memory viewer: ${data.viewer_url}`]),
     ...(data.viewer_log_path === null ? [] : [`Memory viewer log: ${data.viewer_log_path}`]),
-    ...(data.next_step === null ? [] : [`Next: ${data.next_step}`])
+    ...(data.next_step === null ? [] : [`Next: ${data.next_step}`]),
+    ...renderAgentGuidanceReview(data.agent_guidance_review)
   ].join("\n");
 }
 
@@ -379,6 +393,71 @@ function renderRoleCoverage(data: SetupData["role_coverage"]): string[] {
 
 function renderList(label: string, values: readonly string[]): string[] {
   return values.length === 0 ? [] : [`${label}:`, ...values.map((value) => `- ${value}`)];
+}
+
+function buildAgentGuidanceReview(
+  flags: SetupCommandFlags,
+  options: { dryRun: boolean }
+): AgentGuidanceReviewData {
+  if (flags.reviewAgentGuidance !== true) {
+    return {
+      requested: false,
+      files: [],
+      prompt: null,
+      skipped_reason: null
+    };
+  }
+
+  const files = [...AGENT_GUIDANCE_REVIEW_FILES];
+
+  if (options.dryRun) {
+    return {
+      requested: true,
+      files,
+      prompt: null,
+      skipped_reason:
+        "Dry run did not write storage; run `memory setup --review-agent-guidance` to review guidance after setup."
+    };
+  }
+
+  return {
+    requested: true,
+    files,
+    prompt: agentGuidanceReviewPrompt(files),
+    skipped_reason: null
+  };
+}
+
+function agentGuidanceReviewPrompt(files: readonly string[]): string {
+  return [
+    "Review the existing agent guidance for durable Memory.",
+    "",
+    "Files to inspect:",
+    ...files.map((file) => `- ${file}`),
+    "",
+    "Instructions:",
+    "1. Read only content outside the `<!-- memory:start -->` / `<!-- memory:end -->` block.",
+    "2. Treat that guidance as candidate evidence, not truth.",
+    "3. Validate durable claims against current code, docs, manifests, and tests.",
+    "4. Save only reusable project knowledge with `memory remember --stdin`.",
+    "5. If no reusable project knowledge is found, save nothing and report that Memory did not change."
+  ].join("\n");
+}
+
+function renderAgentGuidanceReview(review: AgentGuidanceReviewData): string[] {
+  if (!review.requested) {
+    return [];
+  }
+
+  if (review.prompt !== null) {
+    return ["Agent guidance review:", review.prompt];
+  }
+
+  return [
+    `Agent guidance review: skipped${
+      review.skipped_reason === null ? "" : ` (${review.skipped_reason})`
+    }`
+  ];
 }
 
 function isJsonMode(command: Command): boolean {

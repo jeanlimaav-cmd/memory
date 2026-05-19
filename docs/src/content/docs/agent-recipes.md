@@ -70,7 +70,7 @@ brew install aictx/tap/memory
 npm install -g @aictx/memory
 
 Then run:
-memory setup
+memory setup --review-agent-guidance
 memory check
 memory load "onboard to this repository"
 
@@ -79,7 +79,14 @@ When this is done, report:
 - whether check passed
 - the viewer URL or the command `memory view`
 - the review command `memory diff`
+- whether the agent-guidance review saved durable memory or found nothing to save
 ```
+
+`--review-agent-guidance` keeps setup as a two-step flow. Memory initializes and
+applies conservative bootstrap memory first, then prints a prompt for the active
+agent to review existing guidance outside the managed Memory block. Do not save
+semantic memory from `AGENTS.md` or `CLAUDE.md` unless the claim is validated
+against current repo evidence.
 
 ## Repair prompt
 

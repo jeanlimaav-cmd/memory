@@ -1,6 +1,6 @@
 {
   "body_path": "memory/syntheses/feature-map.md",
-  "content_hash": "sha256:a949d5c53f129bcbbd122992c2d7f6c6017321c6e82736e77646e384e504a674",
+  "content_hash": "sha256:c5774417b12f47016d8c30dd629119d33c94361134c38fe79a4eb92ca080bc83",
   "created_at": "2026-05-18T15:00:40+02:00",
   "evidence": [
     {
@@ -34,6 +34,18 @@
     {
       "id": "src/cli/commands/docs.ts",
       "kind": "file"
+    },
+    {
+      "id": "src/cli/commands/setup.ts",
+      "kind": "file"
+    },
+    {
+      "id": "docs/src/content/docs/cli.md",
+      "kind": "file"
+    },
+    {
+      "id": "integrations/templates/agent-guidance.md",
+      "kind": "file"
     }
   ],
   "facets": {
@@ -44,7 +56,13 @@
       "src/cli/commands/diff.ts",
       "src/cli/commands/docs.ts",
       "src/cli/commands/export.ts",
-      "docs/src/content/docs/memory-recipes.md"
+      "src/cli/commands/setup.ts",
+      "docs/src/content/docs/cli.md",
+      "docs/src/content/docs/getting-started.md",
+      "docs/src/content/docs/agent-integration.md",
+      "docs/src/content/docs/agent-recipes.md",
+      "docs/src/content/docs/memory-recipes.md",
+      "integrations/templates/agent-guidance.md"
     ],
     "category": "feature-map",
     "load_modes": [
@@ -70,5 +88,5 @@
   ],
   "title": "Feature map",
   "type": "synthesis",
-  "updated_at": "2026-05-18T15:32:03+02:00"
+  "updated_at": "2026-05-19T15:37:18+02:00"
 }

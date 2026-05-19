@@ -39,6 +39,7 @@ memory setup
 memory setup --dry-run
 memory setup --no-view
 memory setup --open
+memory setup --review-agent-guidance
 memory suggest --bootstrap --patch > bootstrap-memory.json
 memory patch review bootstrap-memory.json
 ```
@@ -46,6 +47,9 @@ memory patch review bootstrap-memory.json
 `setup` is the normal first-run command. It creates local storage if needed,
 updates optional repo guidance, writes conservative source-backed memory, runs
 checks, reports role coverage, and starts the local viewer unless told not to.
+Use `memory setup --review-agent-guidance` when existing `AGENTS.md` or
+`CLAUDE.md` guidance should be reviewed by the active agent after setup; Memory
+does not infer semantic memory from that free-form guidance automatically.
 
 After setup, `memory lens project-map` gives a readable overview and
 `memory load "onboard to this repository"` checks that retrieval is useful.

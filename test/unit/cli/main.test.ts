@@ -44,6 +44,8 @@ describe("CLI main", () => {
     expect(setupHelp).toContain("writing repo files");
     expect(setupHelp).toContain("--no-view");
     expect(setupHelp).toContain("Skip local viewer startup");
+    expect(setupHelp).toContain("--review-agent-guidance");
+    expect(setupHelp).toContain("semantic review");
   });
 
   it("returns exit 2 for unknown options", async () => {

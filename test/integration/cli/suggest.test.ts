@@ -134,6 +134,12 @@ interface SetupSuccessEnvelope {
     viewer_url: string | null;
     viewer_log_path: string | null;
     next_step: string | null;
+    agent_guidance_review: {
+      requested: boolean;
+      files: string[];
+      prompt: string | null;
+      skipped_reason: string | null;
+    };
   };
   warnings: string[];
 }
@@ -551,6 +557,52 @@ describe("memory suggest CLI", () => {
     expect(envelope.data.viewer_log_path).toBeNull();
   });
 
+  it("prints an agent guidance review prompt from setup when requested", async () => {
+    const repo = await createBootstrapPatchGitRepo("memory-cli-setup-guidance-review-");
+
+    const output = await runCli(
+      ["node", "memory", "setup", "--review-agent-guidance", "--no-view"],
+      repo
+    );
+
+    expect(output.exitCode).toBe(0);
+    expect(output.stderr).toBe("");
+    expect(output.stdout).toContain("Agent guidance review:");
+    expect(output.stdout).toContain("Review the existing agent guidance for durable Memory.");
+    expect(output.stdout).toContain("Files to inspect:");
+    expect(output.stdout).toContain("- AGENTS.md");
+    expect(output.stdout).toContain("- CLAUDE.md");
+    expect(output.stdout).toContain("outside the `<!-- memory:start -->` / `<!-- memory:end -->` block");
+    expect(output.stdout).toContain("candidate evidence, not truth");
+    expect(output.stdout).toContain("memory remember --stdin");
+    expect(output.stdout).toContain("save nothing and report that Memory did not change");
+  });
+
+  it("includes agent guidance review details in setup JSON output", async () => {
+    const repo = await createBootstrapPatchGitProject("memory-cli-setup-guidance-review-json-");
+
+    const output = await runCli(
+      ["node", "memory", "setup", "--review-agent-guidance", "--json"],
+      repo
+    );
+
+    expect(output.exitCode).toBe(0);
+    expect(output.stderr).toBe("");
+    const envelope = JSON.parse(output.stdout) as SetupSuccessEnvelope;
+    expect(envelope.ok).toBe(true);
+    expect(envelope.data.agent_guidance_review).toMatchObject({
+      requested: true,
+      files: ["AGENTS.md", "CLAUDE.md"],
+      skipped_reason: null
+    });
+    expect(envelope.data.agent_guidance_review.prompt).toContain(
+      "Review the existing agent guidance for durable Memory."
+    );
+    expect(envelope.data.agent_guidance_review.prompt).toContain(
+      "Treat that guidance as candidate evidence, not truth."
+    );
+  });
+
   it("starts a detached viewer by default for human setup output", async () => {
     const repo = await createBootstrapPatchGitRepo("memory-cli-setup-default-view-");
 
@@ -816,12 +868,20 @@ describe("memory suggest CLI", () => {
     const relationCount = afterFirst.data.relations.length;
     const relationTriples = activeRelationTriples(afterFirst.data.relations);
 
-    const second = await runCli(["node", "memory", "setup", "--json"], repo);
+    const second = await runCli(
+      ["node", "memory", "setup", "--review-agent-guidance", "--json"],
+      repo
+    );
     expect(second.exitCode).toBe(0);
     expect(second.stderr).toBe("");
     const envelope = JSON.parse(second.stdout) as SetupSuccessEnvelope;
     expect(envelope.ok).toBe(true);
     expect(envelope.data.bootstrap_patch_applied).toBe(false);
+    expect(envelope.data.save).toBeNull();
+    expect(envelope.data.agent_guidance_review.requested).toBe(true);
+    expect(envelope.data.agent_guidance_review.prompt).toContain(
+      "Review the existing agent guidance for durable Memory."
+    );
 
     const afterSecond = await readCanonicalStorage(repo);
     expect(afterSecond.ok).toBe(true);
@@ -884,6 +944,28 @@ describe("memory suggest CLI", () => {
     await expect(pathExists(join(repo, "AGENTS.md"))).resolves.toBe(false);
     await expect(pathExists(join(repo, "CLAUDE.md"))).resolves.toBe(false);
     await expect(git(repo, ["status", "--short"])).resolves.toBe(beforeStatus);
+  });
+
+  it("skips actionable agent guidance review prompts during setup dry-run", async () => {
+    const repo = await createBootstrapPatchGitRepo("memory-cli-setup-guidance-review-dry-run-");
+
+    const output = await runCli(
+      ["node", "memory", "setup", "--dry-run", "--review-agent-guidance", "--json"],
+      repo
+    );
+
+    expect(output.exitCode).toBe(0);
+    expect(output.stderr).toBe("");
+    const envelope = JSON.parse(output.stdout) as SetupSuccessEnvelope;
+    expect(envelope.ok).toBe(true);
+    expect(envelope.data.dry_run).toBe(true);
+    expect(envelope.data.agent_guidance_review).toEqual({
+      requested: true,
+      files: ["AGENTS.md", "CLAUDE.md"],
+      prompt: null,
+      skipped_reason:
+        "Dry run did not write storage; run `memory setup --review-agent-guidance` to review guidance after setup."
+    });
   });
 
   it("previews forced setup without deleting or rewriting existing storage", async () => {

@@ -36,6 +36,7 @@ memory setup
 memory setup --dry-run
 memory setup --no-view
 memory setup --open
+memory setup --review-agent-guidance
 memory patch review bootstrap-memory.json
 ```
 
@@ -48,6 +49,10 @@ memory patch review bootstrap-memory.json
   rewriting anything.
 - `setup --no-view` skips viewer startup; `setup --open` also opens the viewer
   in the default browser.
+- `setup --review-agent-guidance` prints a prompt for the active agent to
+  semantically review existing `AGENTS.md` and `CLAUDE.md` content outside the
+  managed Memory block after setup. It does not automatically infer or save
+  memory from free-form guidance.
 - `patch review` reviews a structured memory patch without writing it.
 
 :::tip
