@@ -18,8 +18,7 @@
 Memory is a local wiki for AI coding agents and assistants: repo context they
 can load before work, keep current after meaningful changes, and leave
 reviewable in your project. It is inspired by
-[Andrej Karpathy's LLM Wiki pattern](https://gist.githubusercontent.com/karpathy/442a6bf555914893e9891c11519de94f/raw/ac46de1ad27f92b28ac95459c782c07f6b8c964a/llm-wiki.md):
-durable, human-editable project knowledge that models can read before work.
+[Andrej Karpathy's LLM Wiki pattern]
 
 Stop re-explaining the same product intent, architecture decisions, repo
 conventions, setup steps, and known traps every time a new AI coding session
@@ -277,8 +276,6 @@ For official listing paths and release prep, see
 
 Memory is MIT-licensed and built in the open. Issues, docs fixes, examples,
 agent recipes, and pull requests are welcome.
-
-[Contribute on GitHub](https://github.com/aictx/memory/blob/main/CONTRIBUTING.md)
 
 ## Project identity
 
